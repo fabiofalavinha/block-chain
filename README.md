@@ -1,6 +1,6 @@
 # block-chain
 
-## Blockchain is the backbone Technology of Digital CryptoCurrency BitCoin.
+### Blockchain is the backbone Technology of Digital CryptoCurrency BitCoin.
 
 - A Blockchain is a list of records called blocks that are linked together using linked lists and use the cryptographic technique.
 
