@@ -32,7 +32,7 @@ public class BlockUnitTest {
     }
 
     @Test
-    public void testAddNewBlock() {
+    public void testAddNewBlock_t0() {
         final Block newBlock = new Block(
             String.format("New block [%s]", new Date()),
             blockchain.get(blockchain.size() - 1).getHash(),
@@ -46,16 +46,19 @@ public class BlockUnitTest {
     }
 
     @Test
-    public void testBlockchainVerification() {
+    public void testBlockchainVerification_t1() {
         boolean verificationSuccess = true;
 
-        for (int i = 1; i < blockchain.size() && verificationSuccess; i++) {
+        for (int i = 0; i < blockchain.size() && verificationSuccess; i++) {
             final Block currentBlock = blockchain.get(i);
-            final Block previousBlock = blockchain.get(i - 1);
+            final String previousHash =
+                i == 0
+                    ? "0"
+                    : blockchain.get(i - 1).getHash();
 
             verificationSuccess =
                 currentBlock.getHash().equals(currentBlock.calculateBlockHash()) &&
-                previousBlock.getHash().equals(currentBlock.getPreviousHash()) &&
+                previousHash.equals(currentBlock.getPreviousHash()) &&
                 currentBlock.getHash().substring(0, prefix).equals(prefixString);
         }
 
